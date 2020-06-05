@@ -67,13 +67,13 @@ NSBundle *getLocalizedStringKitBundle() {
   }
 
   const char *inputCharacterArray = [hashInput UTF8String];
-  unsigned char outputCharacterArray[CC_MD5_DIGEST_LENGTH];
+  unsigned char outputCharacterArray[8];
 
   CC_MD5(inputCharacterArray, (CC_LONG)strlen(inputCharacterArray), outputCharacterArray);
 
   NSMutableString *key = [[NSMutableString alloc] init];
 
-  for (NSInteger idx = 0; idx < CC_MD5_DIGEST_LENGTH; idx++) {
+  for (NSInteger idx = 0; idx < 8; idx++) {
     [key appendFormat:@"%02x", outputCharacterArray[idx]];
   }
 
